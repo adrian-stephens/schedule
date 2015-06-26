@@ -18,7 +18,7 @@ class Settings(object):
         # Comment out two if unauthenticated smtp server is not available
         self.notifyEmail = "adrians@chezstephens.org.uk"                         # Email address of person to receive notifications
         #self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
-        #self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
+        self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
@@ -30,7 +30,7 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
-        self.update = True
+        self.update = False
 
         # If true, loop until ^c,  if false,  run in single shot mode
         self.loop = False
@@ -67,12 +67,13 @@ class Settings(object):
         #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
-        #self.proxyIP = "192.168.0.23"
+        self.proxyIP = "192.168.0.23"
+        self.proxyPort = 80
       
         
         #self.proxyIP = "127.0.0.1"
-        self.proxyIP = 'proxy-ir.intel.com'
-        self.proxyPort = 911
+        #self.proxyIP = 'proxy-ir.intel.com'
+        #self.proxyPort = 911
       
         
         # Breakout mapping tables ============================================================
