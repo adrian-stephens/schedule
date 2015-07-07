@@ -30,7 +30,7 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
-        self.update = False
+        self.update = True
 
         # If true, loop until ^c,  if false,  run in single shot mode
         self.loop = False
@@ -51,7 +51,7 @@ class Settings(object):
         #self.f2fScheduleURL = "http://802world.org/apps/session/91/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
-        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\July 2015\802-0715-ScheduleofEvents-EC-V1.0.xlsx'
+        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\July 2015\802-0715-ScheduleofEvents-Onsite-V3.0_EC.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
