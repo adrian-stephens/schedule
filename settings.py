@@ -16,7 +16,7 @@ class Settings(object):
         
         
         # Comment out two if unauthenticated smtp server is not available
-        self.notifyEmail = "adrians@chezstephens.org.uk"                         # Email address of person to receive notifications
+        self.notifyEmail = "adrian.p.stephens@intel.com"                         # Email address of person to receive notifications
         #self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
         self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
         
@@ -38,20 +38,20 @@ class Settings(object):
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
-        self.sessionDate = "2015-07-12" # Hawaii
+        self.sessionDate = "2015-09-13" # Bangkok
 
         # The meeting timezone,  represented by an integer being the meeting timing offset from UTC in hours
         # e.g. pacific is -8 in winter and -7 in summer
-        self.timeZoneOffset = -10    
+        self.timeZoneOffset = 7    # ict
 
         # Agenda source definition ===========================================================
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        #self.f2fScheduleURL = "http://802world.org/apps/session/91/attendee/schedule" # Update the session number from F2F numbering
+        #self.f2fScheduleURL = "http://802world.org/apps/session/92/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
-        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\July 2015\802-0715-ScheduleofEvents-Onsite-V3.0_EC.xlsx'
+        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2015-09\802-0915-ScheduleofEvents-V1.0.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -63,8 +63,8 @@ class Settings(object):
         self.matchGroups = ["11", "802 Wireless", 'Wireless', '11/15/18/19/21/22/24']    
         
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        self.calendarID = "802_11_calendar@ieee.org"
-        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        #self.calendarID = "802_11_calendar@ieee.org"
+        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
         self.proxyIP = "192.168.0.23"
@@ -112,48 +112,53 @@ class Settings(object):
            'AQ': 'TGaq',
            'AX': 'TGax',
            'AY': 'TGay',
+           'AZ': 'TGaz',
            "Editor's Meeting": 'Editors Meeting',
            "Editors' Meeting": 'Editors Meeting',
            'REG fixed slot': 'REG',
            'Pub': 'PUB',
-           'NGP': 'NGP SG'
+           'NGP': 'NGP SG',
+           'LRLP': 'NGP TIG'
         }
            
         
         # List of breakouts not to post in either calendar or IMAT
-        self.doNotPost = ['Executive Leadership Mtg', '802.11 Leadership', 'Leadership Meeting', ]
+        self.doNotPost = ['Executive Leadership Mtg', '802.11 Leadership', 'Leadership Meeting', '802.11 Executive Leadership Mtg']
        
       
         # List of breakouts that may go on the calendar,  but should not go in IMAT
-        self.doNotPostIMAT = ['Joint Opening Plenary', 'Social Reception', 'Wireless Leadership Meeting', 'Wireless Joint Opening Plenary', 'Wireless Social Reception', 'Wireless Chairs']
+        self.doNotPostIMAT = ['Joint Opening Plenary', 'Social Reception', 'Wireless Leadership Meeting', 
+                              'Wireless Joint Opening Plenary', 'Wireless Social Reception', 'Wireless Chairs',
+                              '802.11/15/18/19/21/22/24 Wireless Chairs']
 
         # Mapping of breakout to project.  The concept of "project" is local to this application.
+        # Note, the breakout must be lower case.  Project is in mixed case.
         self.breakoutToProject = {
-        'CAC': '802.11',
-        'Closing Plenary': '802.11',
-        'Editors Meeting': '802.11',
-        'Mid-week Plenary': '802.11',
-        'Mid-Week Plenary': '802.11',
-        'Opening Plenary': '802.11',
-        'Joint 802.1 + 802.11 TGak/ARC': 'TGak',
-        'ARC': '802.11',
-        'JTC1': '802.11',
-        'NGP SG': '802.11',
-        'New Members': '802.11',
-        'PAR': '802.11',
-        'REG': '802.11',
-        'Joint 802.11/802.15 REG SC': '802.11',
-        'PUB': '802.11',
-        'WNG': '802.11',
-        'TGah': 'TGah',
-        'TGai': 'TGai',
-        'TGaj': 'TGaj',
-        'TGaJ': 'TGaJ',
-        'TGak': 'TGak',
-        'TGaq': 'TGaq',
-        'TGax': 'TGax',
-        'TGay': 'TGay',
-        'TGmc': 'TGmc'
+        'cac': '802.11',
+        'closing plenary': '802.11',
+        'editors meeting': '802.11',
+        'mid-week plenary': '802.11',
+        'midWeek plenary': '802.11',
+        'opening plenary': '802.11',
+        'joint 802.1 + 802.11 tgak/arc': 'TGak',
+        'arc': '802.11',
+        'jtc1': '802.11',
+        'ngp sg': '802.11',
+        'lrlp': '802.11',
+        'new members': '802.11',
+        'par': '802.11',
+        'reg': '802.11',
+        'joint 802.11/802.15 reg sc': '802.11',
+        'pub': '802.11',
+        'wng': '802.11',
+        'tgah': 'TGah',
+        'tgai': 'TGai',
+        'tgaj': 'TGaj',
+        'tgak': 'TGak',
+        'tgaq': 'TGaq',
+        'tgax': 'TGax',
+        'tgay': 'TGay',
+        'tgmc': 'TGmc'
         }
         
         # Mapping from projects to the IMAT project descriptors
@@ -306,6 +311,12 @@ class Settings(object):
         pattern = "^(.*?) ?\*+$"
         if re.match(pattern, b):
             b = re.sub(pattern,"\\1", b).strip()
+    
+        # In TGxy, ensure xy is lower case
+        pattern = "^TG([A-Za-z]+)$"
+        if re.match(pattern, b):
+            letters = re.sub(pattern,"\\1", b).strip()
+            b = "TG" + letters.lower()   
     
         return b.strip()
 

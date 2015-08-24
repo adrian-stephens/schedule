@@ -185,30 +185,33 @@ def getSessionEvents(settings, s, sessionURL):
                 
                 p2 = cols[4].split('---')
                 summary = p2[0].strip()
-                               
-                location = ''
-                if  cols[1] != None:
-                    location = cols[1]  
-
-                edit = ''
-                if 'edit' in links:
-                    edit = settings.imatBaseURL + links['edit']
-
-                event = ImatEvent(settings, startDateTime, endDateTime, summary, location, startSlot, endSlot,'', p1[0], edit)
-                    
-                if len(p1) > 1:
-                    p2 = p1[1].split(u'\xa0')
-                    event.numerator = p2[0]
-                    event.denominator = p2[2]
-
-                if len(p2) > 1:
-                    if p2[1].strip() == 'cancelled':
-                        event.deleted = True
-
-
-
-                events.append(event)
                 
+                # Ignore events starting with *,  they are manually entered
+                if summary[0] != "*":
+                                   
+                    location = ''
+                    if  cols[1] != None:
+                        location = cols[1]  
+    
+                    edit = ''
+                    if 'edit' in links:
+                        edit = settings.imatBaseURL + links['edit']
+    
+                    event = ImatEvent(settings, startDateTime, endDateTime, summary, location, startSlot, endSlot,'', p1[0], edit)
+                        
+                    if len(p1) > 1:
+                        p2 = p1[1].split(u'\xa0')
+                        event.numerator = p2[0]
+                        event.denominator = p2[2]
+    
+                    if len(p2) > 1:
+                        if p2[1].strip() == 'cancelled':
+                            event.deleted = True
+    
+    
+    
+                    events.append(event)
+                    
     taskMenu = sessionTree.xpath('//div[@class="task_menu"]//a')
     
     addMeetingURL = None
@@ -425,8 +428,8 @@ def addIMATEvent(settings, s, addMeetingURL, startSlots, endSlots, projectIDs, f
         event - event as produced by slottify events
     """
     breakout = event.summary
-    if breakout in settings.breakoutToProject:
-        project = settings.breakoutToProject[breakout]
+    if breakout.lower() in settings.breakoutToProject:
+        project = settings.breakoutToProject[breakout.lower()]
     else:
         print "Unknown breakout '{0}', defaulting to '{1}' for IMAT".format(breakout, settings.defaultProject)
         project = settings.defaultProject

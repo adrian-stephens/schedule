@@ -68,9 +68,12 @@ class Event(object):
             
         if (len(self.location) > 0) and (len(obj.location) > 0) and (self.location != obj.location):
             return True
-            
-        if self.deleted != obj.deleted:
+       
+        if self.deleted and not obj.deleted:
             return True
+            
+#        if self.deleted != obj.deleted:
+#            return True
 
         return False    
         
@@ -92,8 +95,12 @@ class Event(object):
         if (len(self.location) > 0) and (len(obj.location) > 0) and (self.location != obj.location):
             s += '%s location changed: to %s from %s. ' % (self.shortStr(), self.location, obj.location)
             
-        if self.deleted != obj.deleted:
-            s += '%s deleted changed: %s. ' % (self.shortStr(), 'now marked deleted' if self.deleted else 'deletion marker removed')
+        if self.deleted and not obj.deleted:
+            s += '%s deleted changed: %s. ' % (self.shortStr(), 'now marked deleted')
+
+
+#        if self.deleted != obj.deleted:
+#            s += '%s deleted changed: %s. ' % (self.shortStr(), 'now marked deleted' if self.deleted else 'deletion marker removed')
         
         if len(s) > 0:
             s += '\n'
@@ -185,7 +192,8 @@ class ImatEvent(SlottedEvent):
     
 def compareEventLists(l1,n1,l2,n2):
     """
-    Compare two event lists l1 and l2 called n1 and n2,  ignoring any events that ended in the past
+    Compare two event lists l1 and l2 called n1 and n2,  ignoring any events that ended in the past.
+    When one of the lists is on IMAT,  it is l2.
     Returns:
         a list events only in l1
         a list [l1, l2] tuples of those changed
