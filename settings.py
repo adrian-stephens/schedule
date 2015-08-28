@@ -51,7 +51,7 @@ class Settings(object):
         #self.f2fScheduleURL = "http://802world.org/apps/session/92/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
-        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2015-09\802-0915-ScheduleofEvents-V1.0.xlsx'
+        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2015-09\802-0915-ScheduleofEvents-V1.2.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -63,8 +63,8 @@ class Settings(object):
         self.matchGroups = ["11", "802 Wireless", 'Wireless', '11/15/18/19/21/22/24']    
         
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        #self.calendarID = "802_11_calendar@ieee.org"
-        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        self.calendarID = "802_11_calendar@ieee.org"
+        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
         self.proxyIP = "192.168.0.23"
