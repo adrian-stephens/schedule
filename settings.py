@@ -18,7 +18,7 @@ class Settings(object):
         # Comment out two if unauthenticated smtp server is not available
         self.notifyEmail = "adrian.p.stephens@intel.com"                         # Email address of person to receive notifications
         #self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
-        self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
+        #self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
@@ -51,7 +51,7 @@ class Settings(object):
         #self.f2fScheduleURL = "http://802world.org/apps/session/92/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
-        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2015-09\802-0915-ScheduleofEvents-V1.2.xlsx'
+        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2015-09\802-0915-ScheduleofEvents-V1.4.4.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -67,8 +67,9 @@ class Settings(object):
         #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
-        self.proxyIP = "192.168.0.23"
-        self.proxyPort = 80
+        #self.proxyIP = "192.168.0.23"
+        #self.proxyIP = "localhost"
+        #self.proxyPort = 80
       
         
         #self.proxyIP = "127.0.0.1"
@@ -158,6 +159,7 @@ class Settings(object):
         'tgaq': 'TGaq',
         'tgax': 'TGax',
         'tgay': 'TGay',
+        'tgaz': 'TGaz',
         'tgmc': 'TGmc'
         }
         
@@ -170,7 +172,9 @@ class Settings(object):
         'TGak': "C/LM/WG802.11/802.11ak",
         'TGaq': "C/LM/WG802.11/802.11aq",
         'TGax': "C/LM/WG802.11/802.11ax",
-        'TGay': "C/LM/WG802.11/802.11ay" }
+        'TGay': "C/LM/WG802.11/802.11ay",
+        'TGaz': "C/LM/WG802.11/802.11az"
+         }
         
         # These projects are used to collect affiliation if not found in the mapping tables above
         # A warning to STDOUT will be generated if the default is used so that the above tables can

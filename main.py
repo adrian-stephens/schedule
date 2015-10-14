@@ -12,9 +12,9 @@
 #
 # Caveats.  The google Calendar authentication is pretty unpredictable.  It will throw up a browser window to complete
 # Authentication when it determines this is required.  If it keeps doing so every run,  the local credentials.dat
-# will nto be folding a "refresh token".  To get one,  using your google settings,  remove "Adrians Calendar application"
-# from authenticated applications and try again.  This time you shoudl get a brower prompt with a yes / no in it,
-# and a refresh token should be created.   Thereafter,  hopefully brower prompts will be e thing of the past.
+# will not be holding a "refresh token".  To get one,  using your google settings,  remove "Adrians Calendar application"
+# from authenticated applications and try again.  This time you should get a brower prompt with a yes / no in it,
+# and a refresh token should be created.   Thereafter,  hopefully brower prompts will be a thing of the past.
 
 
 from updateImat import updateIMAT
