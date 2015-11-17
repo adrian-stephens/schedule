@@ -88,11 +88,13 @@ def getf2fhttpEvents(settings):
 
     # Get f2f schedule
     r = requests.get(settings.f2fScheduleURL, proxies=proxies)
-    assert (r.status_code == 200),"Cannot read f2f page: {0}".format(settings.scheduleURL)
+    assert (r.status_code == 200),"Cannot read f2f page: {0}".format(settings.f2fScheduleURL)
     scheduleHTTP = r.text
         
     
     # parse the http into f2f events
     f2fEvents = parseHTTP(settings, scheduleHTTP)
+
+    assert (len(f2fEvents) > 0), "f2f page has no events"
 
     return f2fMergeRooms(f2fEvents)

@@ -18,11 +18,11 @@ class Settings(object):
         # Comment out two if unauthenticated smtp server is not available
         self.notifyEmail = "adrian.p.stephens@intel.com"                         # Email address of person to receive notifications
         #self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
-        #self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
+        self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
-        self.imatUser = "adrian.p.stephens@intel.com"                            # IMAT user id to log in and access updateImat data
+        #self.imatUser = "adrian.p.stephens@intel.com"                            # IMAT user id to log in and access updateImat data
         
         # Note, the imat user password is stored in a keyring under service='imat' and self.imatUser
         # e.g.
@@ -38,23 +38,25 @@ class Settings(object):
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
-        self.sessionDate = "2015-09-13" # Bangkok
+        self.sessionDate = "2016-01-17" # Dallas
 
         # The meeting timezone,  represented by an integer being the meeting timing offset from UTC in hours
         # e.g. pacific is -8 in winter and -7 in summer
-        self.timeZoneOffset = 7    # ict
+        self.timeZoneOffset = -5    # Atlanta
 
         # Agenda source definition ===========================================================
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        #self.f2fScheduleURL = "http://802world.org/apps/session/92/attendee/schedule" # Update the session number from F2F numbering
+        #self.f2fScheduleURL = "http://802world.org/apps/session/93/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
-        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2015-09\802-0915-ScheduleofEvents-V1.4.4.xlsx'
+        #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-01\802-01115-ScheduleofEvents-EC-V5.0.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
+        self.agendaExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-01\11-15-xxxx-d00-0000-jan-2016-wg-agenda.xlsx'
+        
         
         # ===================================================================================
 
@@ -63,13 +65,13 @@ class Settings(object):
         self.matchGroups = ["11", "802 Wireless", 'Wireless', '11/15/18/19/21/22/24']    
         
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        self.calendarID = "802_11_calendar@ieee.org"
-        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        #self.calendarID = "802_11_calendar@ieee.org"
+        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
-        #self.proxyIP = "192.168.0.23"
+        self.proxyPort = 80
+        self.proxyIP = "192.168.0.23"
         #self.proxyIP = "localhost"
-        #self.proxyPort = 80
       
         
         #self.proxyIP = "127.0.0.1"
@@ -291,15 +293,16 @@ class Settings(object):
         """
         import re
         
+        
         # Change 802.Wireless to 802 Wireless
         pattern = "^802\\.(Wireless .*)$"
         if re.match(pattern, b):
             b = re.sub(pattern,"\\1", b).strip()
         
-        # Remove leading 802[.group]
-        pattern = "^802(.[0-9]*)? (.*)$"
+        # Remove leading repeated 802[.group]
+        pattern = "^(802(\.[^ ]+)? )+(.*)$"
         if re.match(pattern, b):
-            b = re.sub(pattern,"\\2", b).strip()
+            b = re.sub(pattern,"\\3", b).strip()
         
         # Remove leading WG
         pattern = "^WG (.*)$"

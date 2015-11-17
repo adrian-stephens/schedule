@@ -47,7 +47,7 @@ class Event(object):
     
     # Equality is determined by a matching start and summary
     def __eq__(self,obj):
-        return (self.startDateTime == obj.startDateTime) and (self.summary == obj.summary)
+        return (self.startDateTime == obj.startDateTime) and (self.summary == obj.summary)  and (self.deleted == obj.deleted)
 
     def __ne__(self,obj):
         return not self == obj
@@ -69,11 +69,11 @@ class Event(object):
         if (len(self.location) > 0) and (len(obj.location) > 0) and (self.location != obj.location):
             return True
        
-        if self.deleted and not obj.deleted:
-            return True
-            
-#        if self.deleted != obj.deleted:
+#        if self.deleted and not obj.deleted:
 #            return True
+            
+        if self.deleted != obj.deleted:
+            return True
 
         return False    
         
@@ -95,12 +95,12 @@ class Event(object):
         if (len(self.location) > 0) and (len(obj.location) > 0) and (self.location != obj.location):
             s += '%s location changed: to %s from %s. ' % (self.shortStr(), self.location, obj.location)
             
-        if self.deleted and not obj.deleted:
-            s += '%s deleted changed: %s. ' % (self.shortStr(), 'now marked deleted')
-
-
 #        if self.deleted != obj.deleted:
-#            s += '%s deleted changed: %s. ' % (self.shortStr(), 'now marked deleted' if self.deleted else 'deletion marker removed')
+#            s += '%s deleted changed: to %s from %s. ' % (self.shortStr(), 'now marked deleted')
+
+
+        if self.deleted != obj.deleted:
+            s += '%s deleted changed: %s. ' % (self.shortStr(), 'now marked deleted' if self.deleted else 'deletion marker removed')
         
         if len(s) > 0:
             s += '\n'

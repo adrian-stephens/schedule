@@ -45,7 +45,7 @@ def getAgendaEvents(settings):
     """
     Read meeting events from the agend excel file
     """
-    book = xlrd.open_workbook(settings.agendaFileName)
+    book = xlrd.open_workbook(settings.agendaExcelFile)
 
     assert (book),"Cannot open agenda file"
     
@@ -71,6 +71,8 @@ def getAgendaEvents(settings):
     for rowIndex in range(headerRow+1,sheet.nrows):
         v = sheet.cell(rowIndex,0).value
         if not v:
+            break
+        if not "-" in v:
             break
         start, end = parseTimeRange(v)
         slotEntry = {'start': start, 'end': end}
@@ -124,8 +126,8 @@ def getAgendaEvents(settings):
                     endDateTime = heading + timedelta(hours=endTime.hour, minutes=endTime.minute)
                     summary = getMeetingSummary(settings, itemValue)
 
-                    if summary not in settings.doNotPostAgenda:
-                        newEvent = Event(startDateTime, endDateTime, summary, '')
+                    if summary not in settings.doNotPost:
+                        newEvent = Event(settings,startDateTime, endDateTime, summary, '')
                         events.append(newEvent)              
         
         # Process next day

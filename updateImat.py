@@ -200,9 +200,9 @@ def getSessionEvents(settings, s, sessionURL):
                     event = ImatEvent(settings, startDateTime, endDateTime, summary, location, startSlot, endSlot,'', p1[0], edit)
                         
                     if len(p1) > 1:
-                        p2 = p1[1].split(u'\xa0')
-                        event.numerator = p2[0]
-                        event.denominator = p2[2]
+                        p3 = p1[1].split(u'\xa0')
+                        event.numerator = p3[0]
+                        event.denominator = p3[2]
     
                     if len(p2) > 1:
                         if p2[1].strip() == 'cancelled':
