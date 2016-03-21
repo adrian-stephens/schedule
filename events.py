@@ -11,7 +11,7 @@ class Event(object):
     Base class for all meeting events.  Times and dates are in the meeting locale.
     """
     
-    def __init__(self,settings,startDateTime,endDateTime,summary,location):
+    def __init__(self,settings,startDateTime,endDateTime,summary,location,inIMAT,group):
         self.sessionDateTime = settings.sessionDateTime
         self.startDateTime = startDateTime  # In the local meeting timezone
         self.endDateTime = endDateTime # In the local meeting timezone
@@ -22,7 +22,8 @@ class Event(object):
             self.location = location
         else:
             self.location = ''
-
+        self.inIMAT = inIMAT # Event is present in IMAT
+        self.group = group # name of group hosting breakout
           
     def endsBefore(self, endDateTime):
         return self.endDateTime < endDateTime
@@ -118,8 +119,8 @@ class SlottedEvent(Event):
     """
     Class for events that have been assigned start and end slots
     """
-    def __init__(self,settings,startDateTime,endDateTime,summary,location,startSlot,endSlot):
-        super(SlottedEvent, self).__init__(settings,startDateTime,endDateTime,summary,location)
+    def __init__(self,settings,startDateTime,endDateTime,summary,location,startSlot,endSlot,inIMAT,group):
+        super(SlottedEvent, self).__init__(settings,startDateTime,endDateTime,summary,location,inIMAT,group)
         self.startSlot = startSlot
         if endSlot != None:
             self.endSlot = endSlot
@@ -144,7 +145,7 @@ class ImatEvent(SlottedEvent):
     Class to hold all information in an IMAT Event.  Adds IMAT accounting data to slotted event.
     """
     def __init__(self,settings,startDateTime,endDateTime,summary,location,startSlot,endSlot,group,credit,edit):
-        super(ImatEvent, self).__init__(settings,startDateTime,endDateTime,summary,location,startSlot,endSlot)
+        super(ImatEvent, self).__init__(settings,startDateTime,endDateTime,summary,location,startSlot,endSlot,True,'')
         self.group = group
         self.credit = credit
         self.edit = edit
@@ -190,10 +191,11 @@ class ImatEvent(SlottedEvent):
     
         return s
     
-def compareEventLists(l1,n1,l2,n2):
+def compareEventLists(l1,n1,l2,n2,isImat):
     """
     Compare two event lists l1 and l2 called n1 and n2,  ignoring any events that ended in the past.
     When one of the lists is on IMAT,  it is l2.
+    isImat indicates whether this is testing for imat events only
     Returns:
         a list events only in l1
         a list [l1, l2] tuples of those changed
@@ -216,6 +218,9 @@ def compareEventLists(l1,n1,l2,n2):
         if e1.endDateTimeUTC() <= now:
             continue
         
+        if isImat and not e1.inIMAT:
+            continue
+        
         # Ignore events marked deleted
         if e1.deleted:
             continue
@@ -236,6 +241,9 @@ def compareEventLists(l1,n1,l2,n2):
         
         # Ignore events that end in the past        
         if e2.endDateTimeUTC() <= now:
+            continue
+        
+        if isImat and not e2.inIMAT:
             continue
         
         # Ignore events marked as deleted

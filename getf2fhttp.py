@@ -4,7 +4,7 @@
 # Get the events for the date specified in settings into a list
 
 
-from utils import f2fMergeRooms
+from utils import f2fMergeRooms,getWanted
 from events import Event
 
 import requests
@@ -37,43 +37,46 @@ def parseHTTP(settings, http):
                 track = trackID[9:]
             else:
                 track = None
+                continue
                 
-            if (track in settings.matchGroups):
-                cols=[]
-                colElements = row.findall('td')
-                for colElement in colElements:
-                    for t in colElement.itertext():
-                        cols.append(t)
-    
-                    
-        
-                slotTime = cols[0]
-                times = slotTime.split("-")
-                startTime = datetime.strptime(times[0], "%H:%M").time()
-                endTime = datetime.strptime(times[1], "%H:%M").time()  
+            cols=[]
+            colElements = row.findall('td')
+            for colElement in colElements:
+                for t in colElement.itertext():
+                    cols.append(t)
 
-                # These dateTimes are in the meeting timezone                           
-                startDateTime = settings.sessionDateTimes[dayNumber] + \
-                    timedelta(hours=startTime.hour, minutes=startTime.minute)
-                    
-                endDateTime = settings.sessionDateTimes[dayNumber] + \
-                    timedelta(hours=endTime.hour, minutes=endTime.minute)
                 
+    
+            slotTime = cols[0]
+            times = slotTime.split("-")
+            startTime = datetime.strptime(times[0], "%H:%M").time()
+            endTime = datetime.strptime(times[1], "%H:%M").time()  
+
+            # These dateTimes are in the meeting timezone                           
+            startDateTime = settings.sessionDateTimes[dayNumber] + \
+                timedelta(hours=startTime.hour, minutes=startTime.minute)
                 
-                breakout = cols[1]
-                shortBreakout = settings.getShortBreakout(breakout)
-                
-                # Apply optional mapping to f2f description
-                if shortBreakout in settings.f2fToBreakout:
-                    shortBreakout = settings.f2fToBreakout[shortBreakout]
-                
-                if shortBreakout in settings.doNotPost:
-                    continue
-                
-                room = cols[2]
-                
-                event = Event(settings,startDateTime,endDateTime,shortBreakout,room)
-                events.append(event)
+            endDateTime = settings.sessionDateTimes[dayNumber] + \
+                timedelta(hours=endTime.hour, minutes=endTime.minute)
+            
+            
+            breakout = cols[1]
+            shortBreakout = settings.getShortBreakout(breakout)
+            
+            # Apply optional mapping to f2f description
+            if shortBreakout in settings.f2fToBreakout:
+                shortBreakout = settings.f2fToBreakout[shortBreakout]
+            
+
+            wanted, inIMAT = getWanted(settings,track,shortBreakout)
+            
+            if not wanted:
+                continue
+            
+            room = cols[2]
+            
+            event = Event(settings,startDateTime,endDateTime,shortBreakout,room,inIMAT,track)
+            events.append(event)
 
     return events
 

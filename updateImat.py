@@ -310,8 +310,7 @@ def slottifyEvents(settings, events):
     
         slotDelta = endSlot.index - startSlot.index
         
-        if e.summary in settings.doNotPostIMAT:
-            # We are not to post this meeting on IMAT
+        if not e.inIMAT:
             continue       
        
         # Determine whether the meeting should be split into slots
@@ -337,7 +336,7 @@ def slottifyEvents(settings, events):
                 slotIndex += 1              
                 
         else:
-            newEvent = SlottedEvent(settings, startDateTime,endDateTime,e.summary,e.location,startSlot.name,endSlot.name)
+            newEvent = SlottedEvent(settings, startDateTime,endDateTime,e.summary,e.location,startSlot.name,endSlot.name,True,'')
             newEvents.append(newEvent)
         
     return newEvents
@@ -542,7 +541,7 @@ def updateIMAT(settings, agendaEvents):
     startSlots, endSlots, projectIDs = getSessionSlots(s, addMeetingURL)
 
 
-    onlyInAgenda, changed, onlyInIMAT, info = compareEventLists(imatAgendaEvents,"Agenda", imatEvents,"IMAT")
+    onlyInAgenda, changed, onlyInIMAT, info = compareEventLists(imatAgendaEvents,"Agenda", imatEvents,"IMAT",True)
     
     if settings.update:
         

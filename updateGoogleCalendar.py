@@ -20,11 +20,14 @@ def insertCalEvent (settings, service, event):
     """
     e = {'start': {'dateTime': datetime.strftime(event.startDateTimeUTC(),"%Y-%m-%dT%H:%M:00Z")}, 
          'end': {'dateTime': datetime.strftime(event.endDateTimeUTC(),"%Y-%m-%dT%H:%M:00Z")},
-         'summary': event.summary, 
+         'summary': event.summary,
+         'description': event.group, 
          'location': event.location,
          'extendedProperties': 	
             {'shared': 
-                {'X-MOZ-CATEGORIES': 'autoGen'}}}
+                {'X-MOZ-CATEGORIES': 'autoGen'}
+            }
+        }
     
        
     service.events().insert(calendarId=settings.calendarID, body=e).execute()
@@ -146,7 +149,7 @@ def getCalEvents(settings, service):
                     location = ''
                     
                     
-                calEvent = Event(settings, start, end, summary, location)
+                calEvent = Event(settings, start, end, summary, location, False, "")
                 calEvent.id = event['id']
                 events.append(calEvent)
 
@@ -235,7 +238,7 @@ def updateGoogleCalendar(settings, agendaEvents):
     
    
     
-    onlyInAgenda, changed, onlyInCalendar, info = compareEventLists(agendaEvents,"Agenda",calEvents,"Calendar")
+    onlyInAgenda, changed, onlyInCalendar, info = compareEventLists(agendaEvents,"Agenda",calEvents,"Calendar",False)
     
     if settings.update:
         

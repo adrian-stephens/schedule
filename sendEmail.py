@@ -12,9 +12,13 @@ def sendEmail (settings,text):
     if 'smtpHost' not in settings.__dict__:
         return
 
+    if not settings.defined('imatUser'):
+        return
+
     # Construct email
     msg = MIMEText(text)
     msg['To'] = settings.notifyEmail
+   
     msg['From'] = settings.imatUser
     msg['Subject'] = "Automated IMAT main, sent at " + datetime.now().strftime("%Y-%m-%d %H:%M")
     

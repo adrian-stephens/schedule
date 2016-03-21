@@ -2,6 +2,30 @@
 # Utility functions for "updateGoogleCalendar" project
 # 2015-03-31 Adrian Stephens
 
+def getWanted(settings,group,shortBreakout):
+    wanted = False
+    inIMAT = False
+    
+    if group in settings.matchGroups['imat']:
+        wanted = True
+        inIMAT = True
+    elif group in settings.matchGroups['calendar']:
+        wanted = True
+    
+    if shortBreakout in settings.matchBreakouts['imat']:
+        wanted = True
+        inIMAT = True
+    elif shortBreakout in settings.matchBreakouts['calendar']:
+        wanted = True
+                
+    if shortBreakout in settings.doNotPost['calendar']:
+        wanted = False
+    elif shortBreakout in settings.doNotPost['imat']:
+        inIMAT = False
+
+    return wanted, inIMAT
+
+
 def f2fMergeRooms(events):
     """
     Given a list of Events,  merge rooms for duplicate events

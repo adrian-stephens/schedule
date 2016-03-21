@@ -17,7 +17,17 @@ layout = {
 }
 
 import xlrd
-from utils import f2fMergeRooms
+from utils import f2fMergeRooms,getWanted
+
+
+def getExcelTime(v,datemode):
+    try:
+        return xldate_as_datetime(v,datemode).time()
+
+    # Not a valid excel time format
+    except:
+        v = v.replace(";",":")
+        return datetime.strptime(v, "%H:%M").time()
 
 
 def getf2fExcelEvents(settings):
@@ -85,23 +95,21 @@ def getf2fExcelEvents(settings):
         
         
         v = s.cell(rowIndex, layout['StartTime']['column']).value
-        startTime = xldate_as_datetime(v,book.datemode).time()
+        
+        startTime = getExcelTime(v,book.datemode)
 
         # Start and end times are in the meeting timezone        
         startDateTime = d + timedelta(hours = startTime.hour, minutes = startTime.minute)
     
         v = s.cell(rowIndex, layout['EndTime']['column']).value
-        endTime = xldate_as_datetime(v,book.datemode).time()
-        
+        endTime = getExcelTime(v,book.datemode)
+
         endDateTime = d + timedelta(hours = endTime.hour, minutes = endTime.minute)
     
         group = s.cell(rowIndex, layout['Group']['column']).value
         if s.cell_type(rowIndex, layout['Group']['column']) == xlrd.XL_CELL_NUMBER:
             group = "%d" % (group,)
             
-        if group not in settings.matchGroups:
-            continue
-        
         
         breakout = s.cell(rowIndex, layout['Meeting']['column']).value
         shortBreakout = settings.getShortBreakout(breakout)
@@ -110,7 +118,10 @@ def getf2fExcelEvents(settings):
         if shortBreakout in settings.f2fToBreakout:
             shortBreakout = settings.f2fToBreakout[shortBreakout]
         
-        if shortBreakout in settings.doNotPost:
+        
+        wanted, inIMAT = getWanted(settings,group,shortBreakout)
+        
+        if not wanted:
             continue
         
         room = s.cell(rowIndex, layout['Room']['column']).value
@@ -120,7 +131,7 @@ def getf2fExcelEvents(settings):
             v = s.cell(rowIndex, layout['Location']['column']).value
             room += " (%s)" % (v,)
         
-        entry = Event(settings, startDateTime, endDateTime, shortBreakout, room)    
+        entry = Event(settings, startDateTime, endDateTime, shortBreakout, room, inIMAT, group)    
         entries.append(entry)
 
     return f2fMergeRooms(entries)
