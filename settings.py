@@ -22,7 +22,7 @@ class Settings(object):
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
-        self.imatUser = "adrian.p.stephens@intel.com"                            # IMAT user id to log in and access updateImat data
+        #self.imatUser = "adrian.p.stephens@intel.com"                            # IMAT user id to log in and access updateImat data
         
         # Note, the imat user password is stored in a keyring under service='imat' and self.imatUser
         # e.g.
@@ -33,25 +33,25 @@ class Settings(object):
         self.update = True
 
         # If true, loop until ^c,  if false,  run in single shot mode
-        self.loop = True
+        self.loop = False
 
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
-        self.sessionDate = "2016-03-13" # Macau
+        self.sessionDate = "2016-05-15" # Waikoloa
 
         # The meeting timezone,  represented by an integer being the meeting timing offset from UTC in hours
         # e.g. pacific is -8 in winter and -7 in summer
-        self.timeZoneOffset = +8    # China timezone
+        self.timeZoneOffset = -10    # Hawaii
 
         # Agenda source definition ===========================================================
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        self.f2fScheduleURL = "http://802world.org/apps/session/95/attendee/schedule" # Update the session number from F2F numbering
+        #self.f2fScheduleURL = "http://802world.org/apps/session/96/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
-        #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-03\802-0316-ScheduleofEvents-V2.1_EC_Draft.xlsx'
+        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-05\802W-MAY2016-scheduleofevents-V1-EC-DS.xls'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -63,8 +63,8 @@ class Settings(object):
 
         
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        self.calendarID = "802_11_calendar@ieee.org"
-        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        #self.calendarID = "802_11_calendar@ieee.org"
+        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
         self.proxyPort = 80
