@@ -52,6 +52,13 @@ def f2fMergeRooms(events):
     return filteredEvents
 
     
+def getDate (d):
+    """
+    Given a date object,  return it as a dateTime object
+    """
+    import datetime
+    return datetime.datetime(year=d.year, month=d.month, day=d.day)
+
 def getDuration ( end, start):
     """
     Given two datetime.datetime objects representing the end and start of a period,  determine the duration of the period in minutes

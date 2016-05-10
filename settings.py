@@ -22,7 +22,7 @@ class Settings(object):
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
-        #self.imatUser = "adrian.p.stephens@intel.com"                            # IMAT user id to log in and access updateImat data
+        self.imatUser = "adrian.p.stephens@intel.com"                            # IMAT user id to log in and access updateImat data
         
         # Note, the imat user password is stored in a keyring under service='imat' and self.imatUser
         # e.g.
@@ -51,7 +51,7 @@ class Settings(object):
         #self.f2fScheduleURL = "http://802world.org/apps/session/96/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
-        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-05\802W-MAY2016-scheduleofevents-V1-EC-DS.xls'
+        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-05\802W-MAY2016-scheduleofevents-EC-V2.xls'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -63,8 +63,8 @@ class Settings(object):
 
         
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        #self.calendarID = "802_11_calendar@ieee.org"
-        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        self.calendarID = "802_11_calendar@ieee.org"
+        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
         self.proxyPort = 80
@@ -98,17 +98,18 @@ class Settings(object):
                                                     "EC Opening Session",
                                                     "Privacy open meeting",
                                                     "Social Reception",
-                                                    "EC Closing Session"
+                                                    "EC Closing Session",
+                                                    "5G Standing Committee", "5G EC SC", "5G SC"
                                                    
                                                 ],
-                                   "imat": [ "5G Standing Committee"]
+                                   "imat": ["Newcomer Training"]
                                    }
         
         # List of breakouts not to post in either calendar or IMAT
         # Those on the calendar list are not posted on either the calendar or IMAT
         # Those on the imat list may be posted on the calendar,  but not on IMAT
         self.doNotPost = {
-                            "calendar": ['Executive Leadership Mtg', '802.11 Leadership', 'Leadership Meeting', '802.11 Executive Leadership Mtg'],
+                            "calendar": ['Executive Leadership Mtg', '802.11 Leadership', '802.11 Executive Leadership Mtg'],
                             "imat": ['Joint Opening Plenary', 'Social Reception', 'Wireless Leadership Meeting', 
                               'Wireless Joint Opening Plenary', 'Wireless Social Reception', 'Wireless Chairs',
                               '802.11/15/18/19/21/22/24 Wireless Chairs']
@@ -127,6 +128,8 @@ class Settings(object):
 
         self.f2fToBreakout = {
         '802.11 Opening Plenary': 'Opening Plenary',
+        "Newcomer Training": "New Members",
+        "5G SC": "5G EC SC",
         'NM': 'New Members',
         'REVmc': 'TGmc',
         'WNG SC': 'WNG',
@@ -195,7 +198,8 @@ class Settings(object):
         'tgaz': 'TGaz',
         'tgmc': 'TGmc',
         'tgaq/arc': 'TGaq',
-        'ngmn adhoc': '802.11'
+        'ngmn adhoc': '802.11',
+        '5G EC SC': '802.11'
         }
         
         # Mapping from projects to the IMAT project descriptors

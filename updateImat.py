@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from lxml import html, etree
 import keyring
 from events import ImatEvent, SlottedEvent, compareEventLists
+from utils import getDate
 
 
 # Mapping tables from human readable field name to the names used for input tags
@@ -323,15 +324,15 @@ def slottifyEvents(settings, events):
                 slotName = settings.slots[slotIndex].name
                 if slotIndex != startSlot.index: # For initial slot, take timing from f2f
                     slotStartTime = settings.slots[slotIndex].start
-                    startDateTime = e.sessionDateTime + timedelta(hours=slotStartTime.hour, minutes=slotStartTime.minute)
+                    startDateTime = getDate(e.startDateTime) + timedelta(hours=slotStartTime.hour, minutes=slotStartTime.minute)
                 
                 if slotIndex == endSlot.index: # For the last slot, take timing from the Event
                     endDateTime = e.endDateTime
                 else:
                     slotEndTime = settings.slots[slotIndex].end
-                    endDateTime = e.sessionDateTime + timedelta(hours=slotEndTime.hour, minutes=slotEndTime.minute) # for non-final slots, take end timing from slot
-                
-                newEvent = SlottedEvent(settings, startDateTime,endDateTime,e.summary,e.location,slotName,slotName)
+                    endDateTime = getDate(e.startDateTime) + timedelta(hours=slotEndTime.hour, minutes=slotEndTime.minute) # for non-final slots, take end timing from slot
+               
+                newEvent = SlottedEvent(settings, startDateTime,endDateTime,e.summary,e.location,slotName,slotName,e.inIMAT,e.group)
                 newEvents.append(newEvent)
                 slotIndex += 1              
                 
