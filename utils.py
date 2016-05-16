@@ -21,6 +21,7 @@ def getWanted(settings,group,shortBreakout):
     if shortBreakout in settings.doNotPost['calendar']:
         wanted = False
     elif shortBreakout in settings.doNotPost['imat']:
+        wanted = False
         inIMAT = False
 
     return wanted, inIMAT

@@ -33,7 +33,7 @@ class Settings(object):
         self.update = True
 
         # If true, loop until ^c,  if false,  run in single shot mode
-        self.loop = False
+        self.loop = True
 
 
         # Session date and timezone =========================================================
@@ -48,10 +48,10 @@ class Settings(object):
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        #self.f2fScheduleURL = "http://802world.org/apps/session/96/attendee/schedule" # Update the session number from F2F numbering
+        self.f2fScheduleURL = "http://802world.org/apps/session/96/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
-        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-05\802W-MAY2016-scheduleofevents-EC-V2.xls'
+        #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-05\802W-MAY2016-scheduleofevents-EC-V2.xls'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -99,7 +99,7 @@ class Settings(object):
                                                     "Privacy open meeting",
                                                     "Social Reception",
                                                     "EC Closing Session",
-                                                    "5G Standing Committee", "5G EC SC", "5G SC"
+                                                    "5G Standing Committee", "5G EC SC", "5G SC", "802.802 EC  5G SC", "802 EC  5G SC", "EC  5G SC"
                                                    
                                                 ],
                                    "imat": ["Newcomer Training"]
@@ -332,7 +332,7 @@ class Settings(object):
         
         
         # Change 802.Wireless to 802 Wireless
-        pattern = "^802\\.(Wireless .*)$"
+        pattern = "^802\.(Wireless .*)$"
         if re.match(pattern, b):
             b = re.sub(pattern,"\\1", b).strip()
         
@@ -340,6 +340,12 @@ class Settings(object):
         pattern = "^(802(\.[^ ]+)? )+(.*)$"
         if re.match(pattern, b):
             b = re.sub(pattern,"\\3", b).strip()
+
+        # Remove leading "802."
+        pattern = "^802\. ?(.*)$"
+        if re.match(pattern, b):
+            b = re.sub(pattern,"\\1", b).strip()
+
         
         # Remove leading WG
         pattern = "^WG (.*)$"

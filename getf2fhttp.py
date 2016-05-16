@@ -73,7 +73,7 @@ def parseHTTP(settings, http):
             if not wanted:
                 continue
             
-            room = cols[2]
+            room = cols[2].rstrip(", ") # Remove trailing fluff
             
             event = Event(settings,startDateTime,endDateTime,shortBreakout,room,inIMAT,track)
             events.append(event)
