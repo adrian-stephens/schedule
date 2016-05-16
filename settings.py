@@ -30,10 +30,10 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
-        self.update = True
+        self.update = False
 
         # If true, loop until ^c,  if false,  run in single shot mode
-        self.loop = True
+        self.loop = False
 
 
         # Session date and timezone =========================================================
@@ -67,14 +67,14 @@ class Settings(object):
         #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
-        self.proxyPort = 80
-        self.proxyIP = "192.168.0.23"
+        #self.proxyPort = 80
+        #self.proxyIP = "192.168.0.23"
         #self.proxyIP = "localhost"
       
         
         #self.proxyIP = "127.0.0.1"
-        #self.proxyIP = 'proxy-ir.intel.com'
-        #self.proxyPort = 911
+        self.proxyIP = 'proxy-ir.intel.com'
+        self.proxyPort = 911
       
         
         # Filtering tables ====================================================================
@@ -330,21 +330,16 @@ class Settings(object):
         """
         import re
         
-        
-        # Change 802.Wireless to 802 Wireless
-        pattern = "^802\.(Wireless .*)$"
+        # Delete initial "802. "
+        pattern = "^802\\. (.*)$"
         if re.match(pattern, b):
             b = re.sub(pattern,"\\1", b).strip()
         
-        # Remove leading repeated 802[.group]
-        pattern = "^(802(\.[^ ]+)? )+(.*)$"
+        # Delete repeated initial "802.<word> "
+        pattern = "^(802\\.[^ ]+ )+(.*)$"
         if re.match(pattern, b):
-            b = re.sub(pattern,"\\3", b).strip()
-
-        # Remove leading "802."
-        pattern = "^802\. ?(.*)$"
-        if re.match(pattern, b):
-            b = re.sub(pattern,"\\1", b).strip()
+            b = re.sub(pattern,"\\2", b).strip()
+        
 
         
         # Remove leading WG
@@ -367,7 +362,10 @@ class Settings(object):
         if re.match(pattern, b):
             letters = re.sub(pattern,"\\1", b).strip()
             b = "TG" + letters.lower()   
-    
+
+        
+
+        
         return b.strip()
 
     def defined(self, n):
@@ -375,4 +373,16 @@ class Settings(object):
         Return True if n is defined for settings
         """
         return n in self.__dict__
+    
+    
+    
+
+
+if __name__ == '__main__':
+    # Unit test
+    test = ['802.Wireless m1', "802. m2", "802.ab m3", "802.11 802.12 m4", "WG m5", "m6 - stuff", "m7*", "TGAY"]
+    settings = Settings()
+    for t in test:
+        r = settings.getShortBreakout(t)
+        print "%s -> %s" % (t, r)
     
