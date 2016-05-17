@@ -18,7 +18,7 @@ class Settings(object):
         # Comment out two if unauthenticated smtp server is not available
         self.notifyEmail = "adrian.p.stephens@intel.com"                         # Email address of person to receive notifications
         #self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
-        self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
+        #self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
@@ -125,6 +125,10 @@ class Settings(object):
         # The breakout is then mapped to a project, and the project mapped to a group description,
         # which is used to tell IMAT which project to associate affiliation with for attendances to
         # that particular breakout.
+        
+        # This table creates exceptions for the mapping done by getShortBreakout.  Put a meeting
+        # in here if the default getShortBreakout removes essential information.
+        self.overrideShortBreakout = {'802.11 TGax - AdHoc Chairs': 'TGax - Adhoc Chairs'}
 
         self.f2fToBreakout = {
         '802.11 Opening Plenary': 'Opening Plenary',
@@ -329,6 +333,9 @@ class Settings(object):
         Example output: "TGah"
         """
         import re
+        
+        if b in self.overrideShortBreakout:
+            return self.overrideShortBreakout[b]
         
         # Delete initial "802. "
         pattern = "^802\\. (.*)$"
