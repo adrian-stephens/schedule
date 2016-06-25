@@ -22,7 +22,7 @@ class Settings(object):
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
-        self.imatUser = "adrian.p.stephens@intel.com"                            # IMAT user id to log in and access updateImat data
+        # self.imatUser = "adrian.p.stephens@intel.com"                            # IMAT user id to log in and access updateImat data
         
         # Note, the imat user password is stored in a keyring under service='imat' and self.imatUser
         # e.g.
@@ -30,7 +30,7 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
-        self.update = False
+        self.update = True
 
         # If true, loop until ^c,  if false,  run in single shot mode
         self.loop = False
@@ -38,20 +38,20 @@ class Settings(object):
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
-        self.sessionDate = "2016-05-15" # Waikoloa
+        self.sessionDate = "2016-07-24" # San Diego
 
         # The meeting timezone,  represented by an integer being the meeting timing offset from UTC in hours
         # e.g. pacific is -8 in winter and -7 in summer
-        self.timeZoneOffset = -10    # Hawaii
+        self.timeZoneOffset = -7    # PDT
 
         # Agenda source definition ===========================================================
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        self.f2fScheduleURL = "http://802world.org/apps/session/96/attendee/schedule" # Update the session number from F2F numbering
+        #self.f2fScheduleURL = "http://802world.org/apps/session/96/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
-        #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-05\802W-MAY2016-scheduleofevents-EC-V2.xls'
+        self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -63,8 +63,8 @@ class Settings(object):
 
         
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        self.calendarID = "802_11_calendar@ieee.org"
-        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        #self.calendarID = "802_11_calendar@ieee.org"
+        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
         #self.proxyPort = 80
@@ -83,7 +83,7 @@ class Settings(object):
         # separately for imat and calendar purposes.  The imat list is added to the calendar
         # list,  so there is no need to list things twice.
         self.matchGroups = {
-                                "calendar": ["18", "802 Wireless", 'Wireless', '11/15/18/19/21/22/24'],
+                                "calendar": ["18"],
                                 "imat": ["11"] 
                             }
         
@@ -94,15 +94,17 @@ class Settings(object):
         # The calendar list also includes the imat list,  so there is no need to list things twice.
         self.matchBreakouts = {
                                    "calendar": [
+                                                    "Wireless Chairs - Leadership Mtg",
                                                     "LMSC Rules Review",
                                                     "EC Opening Session",
                                                     "Privacy open meeting",
                                                     "Social Reception",
                                                     "EC Closing Session",
-                                                    "5G Standing Committee", "5G EC SC", "5G SC", "802.802 EC  5G SC", "802 EC  5G SC", "EC  5G SC"
+                                                    "Wireless Chairs"
                                                    
                                                 ],
-                                   "imat": ["Newcomer Training"]
+                                   "imat": ["Newcomer Training",
+                                            "EC 5G  Standing Committee", "5G Standing Committee", "5G EC SC", "5G SC", "802.802 EC  5G SC", "802 EC  5G SC", "EC  5G SC"]
                                    }
         
         # List of breakouts not to post in either calendar or IMAT
@@ -333,6 +335,9 @@ class Settings(object):
         Example output: "TGah"
         """
         import re
+        
+        if b == "Wireless Chairs - Leadership Mtg":
+            i = 0
         
         if b in self.overrideShortBreakout:
             return self.overrideShortBreakout[b]
