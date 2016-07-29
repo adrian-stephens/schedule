@@ -73,8 +73,8 @@ class Settings(object):
       
         
         #self.proxyIP = "127.0.0.1"
-        #self.proxyIP = 'proxy-ir.intel.com'
-        #self.proxyPort = 911
+        self.proxyIP = 'proxy-ir.intel.com'
+        self.proxyPort = 911
       
         
         # Filtering tables ====================================================================
