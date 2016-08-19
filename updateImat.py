@@ -542,7 +542,7 @@ def updateIMAT(settings, agendaEvents):
     startSlots, endSlots, projectIDs = getSessionSlots(s, addMeetingURL)
 
 
-    onlyInAgenda, changed, onlyInIMAT, info = compareEventLists(imatAgendaEvents,"Agenda", imatEvents,"IMAT",True)
+    onlyInAgenda, changed, onlyInIMAT, info = compareEventLists(imatAgendaEvents,"Agenda", imatEvents,"IMAT",True, settings.updatePast)
     
     if settings.update:
         

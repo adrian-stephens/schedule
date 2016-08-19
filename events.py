@@ -18,6 +18,7 @@ class Event(object):
         self.summary = summary
         self.deleted = False
         self.timeZoneOffset = settings.timeZoneOffset
+
         if location != None:
             self.location = location
         else:
@@ -191,11 +192,12 @@ class ImatEvent(SlottedEvent):
     
         return s
     
-def compareEventLists(l1,n1,l2,n2,isImat):
+def compareEventLists(l1,n1,l2,n2,isImat,updatePast):
     """
-    Compare two event lists l1 and l2 called n1 and n2,  ignoring any events that ended in the past.
+    Compare two event lists l1 and l2 called n1 and n2,  conditionally ignoring any events that ended in the past.
     When one of the lists is on IMAT,  it is l2.
     isImat indicates whether this is testing for imat events only
+    updatePast indicates whether past events should be updated
     Returns:
         a list events only in l1
         a list [l1, l2] tuples of those changed
@@ -215,11 +217,11 @@ def compareEventLists(l1,n1,l2,n2,isImat):
     for e1 in l1:
         
         # Ignore events that start in the past        
-        if e1.startDateTimeUTC() <= now:
+        if (e1.startDateTimeUTC() <= now) and not updatePast:
             continue
         
         # Ignore events that end in the past        
-        if e1.endDateTimeUTC() <= now:
+        if (e1.endDateTimeUTC() <= now)  and not updatePast:
             continue
         
         if isImat and not e1.inIMAT:
@@ -244,11 +246,11 @@ def compareEventLists(l1,n1,l2,n2,isImat):
     for e2 in l2:
         
         # Ignore events that start in the past        
-        if e2.startDateTimeUTC() <= now:
+        if (e2.startDateTimeUTC() <= now)  and not updatePast:
             continue
         
         # Ignore events that end in the past        
-        if e2.endDateTimeUTC() <= now:
+        if (e2.endDateTimeUTC() <= now)  and not updatePast:
             continue
         
         if isImat and not e2.inIMAT:

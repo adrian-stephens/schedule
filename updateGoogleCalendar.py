@@ -238,7 +238,7 @@ def updateGoogleCalendar(settings, agendaEvents):
     
    
     
-    onlyInAgenda, changed, onlyInCalendar, info = compareEventLists(agendaEvents,"Agenda",calEvents,"Calendar",False)
+    onlyInAgenda, changed, onlyInCalendar, info = compareEventLists(agendaEvents,"Agenda",calEvents,"Calendar",False, settings.updatePast)
     
     if settings.update:
         

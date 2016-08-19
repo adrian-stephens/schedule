@@ -16,25 +16,32 @@ class Settings(object):
         
         
         # Comment out two if unauthenticated smtp server is not available
-        self.notifyEmail = "adrian.p.stephens@intel.com"                         # Email address of person to receive notifications
+        self.notifyEmail = "adrian.p.stephens@ieee.org"                         # Email address of person to receive notifications
         #self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
         #self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
-        self.imatUser = "adrian.p.stephens@intel.com"                            # IMAT user id to log in and access updateImat data
+        self.imatUser = "adrian.p.stephens@ieee.org"                            # IMAT user id to log in and access updateImat data
         
         # Note, the imat user password is stored in a keyring under service='imat' and self.imatUser
         # e.g.
         # >>> import keyring
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
+        # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
+        #self.calendarID = "802_11_calendar@ieee.org"
+        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+
         # If true, perform update.  If false,  just report differences,  but make no changes.
-        self.update = True
+        self.update = False
 
         # If true, loop until ^c,  if false,  run in single shot mode
         self.loop = False
 
+        # If true, continue to update events in the past.  If false,  ignore changes to past events.
+        # Normally set to False
+        self.updatePast = True
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
@@ -61,10 +68,7 @@ class Settings(object):
         # ===================================================================================
 
 
-        
-        # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        self.calendarID = "802_11_calendar@ieee.org"
-        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+
                    
         # HTTP Proxy settings.  Comment out if http access is direct.
         #self.proxyPort = 80
@@ -73,8 +77,8 @@ class Settings(object):
       
         
         #self.proxyIP = "127.0.0.1"
-        self.proxyIP = 'proxy-ir.intel.com'
-        self.proxyPort = 911
+        #self.proxyIP = 'proxy-ir.intel.com'
+        #self.proxyPort = 911
       
         
         # Filtering tables ====================================================================
