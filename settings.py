@@ -30,39 +30,39 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        #self.calendarID = "802_11_calendar@ieee.org"
+        self.calendarID = "802_11_calendar@ieee.org"
         #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
-        self.update = False
+        self.update = True
 
         # If true, loop until ^c,  if false,  run in single shot mode
         self.loop = False
 
         # If true, continue to update events in the past.  If false,  ignore changes to past events.
         # Normally set to False
-        self.updatePast = True
+        self.updatePast = False
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
-        self.sessionDate = "2016-07-24" # San Diego
+        self.sessionDate = "2016-09-11" # San Diego
 
         # The meeting timezone,  represented by an integer being the meeting timing offset from UTC in hours
         # e.g. pacific is -8 in winter and -7 in summer
-        self.timeZoneOffset = -7    # PDT
+        self.timeZoneOffset = +2    # PDT
 
         # Agenda source definition ===========================================================
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
+        #self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
         
         # The full path name to the schedule file sent out by F2F.
         #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
+        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2016-09\802-0916-ScheduleofEvents-V1.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
-        #self.agendaExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-01\11-15-xxxx-d00-0000-jan-2016-wg-agenda.xlsx'
         
         
         # ===================================================================================
@@ -147,7 +147,8 @@ class Settings(object):
         'WNG SC': 'WNG',
         'Wireless NM': "New Members",
         'Wireless Social Reception': "Social Reception",
-        'Joint Meeting TGaq': 'TGaq/ARC'
+        'Joint Meeting TGaq': 'TGaq/ARC',
+        'JOE': 'AANI SC'
         }
         
         
@@ -188,6 +189,7 @@ class Settings(object):
         'midWeek plenary': '802.11',
         'opening plenary': '802.11',
         '802 ec 5g  standing committee': '802.11', '5g ec sc': '802.11',
+        'aani sc': '802.11',
         'joint 802.1 + 802.11 tgak/arc': 'TGak',
         'arc': '802.11',
         'jtc1': '802.11', '802/JTC1 Standing Committee': '802.11',
@@ -345,6 +347,12 @@ class Settings(object):
         #    dummy = 1
         
 
+        if isinstance(b, float):
+            b = "%.2f" % b
+            
+        if isinstance(b, int):
+            b = "%d" % b
+        
         
         if b in self.overrideShortBreakout:
             return self.overrideShortBreakout[b]
