@@ -34,7 +34,7 @@ class Settings(object):
         #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
-        self.update = True
+        self.update = False
 
         # If true, loop until ^c,  if false,  run in single shot mode
         self.loop = False

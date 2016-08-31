@@ -8,7 +8,7 @@
 # 1. run: "pip install --upgrade google-api-python-client"
 # 2. A writable google calender,  identified by the Google calender ID.
 # 3. The password for the updateImat user installed in a keyring using:
-# >>> keyring.set_password("updateImat", '<imatUser>', '<password>')
+# >>> keyring.set_password("imat", '<imatUser>', '<password>')
 #
 # Caveats.  The google Calendar authentication is pretty unpredictable.  It will throw up a browser window to complete
 # Authentication when it determines this is required.  If it keeps doing so every run,  the local credentials.dat
