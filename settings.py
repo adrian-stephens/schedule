@@ -34,7 +34,7 @@ class Settings(object):
         #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
-        self.update = False
+        self.update = True
 
         # If true, loop until ^c,  if false,  run in single shot mode
         self.loop = False
@@ -59,7 +59,7 @@ class Settings(object):
         
         # The full path name to the schedule file sent out by F2F.
         #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
-        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2016-09\802-0916-ScheduleofEvents-V1.xlsx'
+        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2016-09\802-0916-ScheduleofEvents-V2.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
