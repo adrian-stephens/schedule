@@ -1,6 +1,7 @@
 # utils.py
 # Utility functions for "updateGoogleCalendar" project
 # 2015-03-31 Adrian Stephens
+from __builtin__ import True
 
 def getWanted(settings,group,shortBreakout):
     wanted = False
@@ -17,6 +18,19 @@ def getWanted(settings,group,shortBreakout):
         inIMAT = True
     elif shortBreakout in settings.matchBreakouts['calendar']:
         wanted = True
+        
+    # now look for breakouts with specific groups
+    if shortBreakout in settings.matchBreakoutAndGroup['imat']:
+        if group in settings.matchBreakoutAndGroup['imat'][shortBreakout]:
+            wanted = True
+            inIMAT = True
+        else:
+            dummy = 0        
+    elif shortBreakout in settings.matchBreakoutAndGroup['calendar']:
+        if group in settings.matchBreakoutAndGroup['calendar'][shortBreakout]:
+            wanted = True
+        else:
+            dummy = 0        
                 
     if shortBreakout in settings.doNotPost['calendar']:
         wanted = False

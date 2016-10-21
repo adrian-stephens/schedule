@@ -30,8 +30,8 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        self.calendarID = "802_11_calendar@ieee.org"
-        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        #self.calendarID = "802_11_calendar@ieee.org"
+        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
         self.update = True
@@ -45,11 +45,11 @@ class Settings(object):
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
-        self.sessionDate = "2016-09-11" # San Diego
+        self.sessionDate = "2016-11-06" # San Antonio
 
         # The meeting timezone,  represented by an integer being the meeting timing offset from UTC in hours
         # e.g. pacific is -8 in winter and -7 in summer
-        self.timeZoneOffset = +2    # PDT
+        self.timeZoneOffset = -6
 
         # Agenda source definition ===========================================================
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
@@ -59,7 +59,7 @@ class Settings(object):
         
         # The full path name to the schedule file sent out by F2F.
         #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
-        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2016-09\802-0916-ScheduleofEvents v5.1.xlsx'
+        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2016-11\IEEE802-1116_SCHEDULE_V1.0_ECDraft.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -107,11 +107,19 @@ class Settings(object):
                                                     "Wireless Chairs"
                                                    
                                                 ],
-                                   "imat": ["Newcomer Training",
-                                            "EC 5G  Standing Committee", "5G Standing Committee", "5G EC SC", "5G SC",
-                                            "JTC1 -- ISO/IEC/JTC1/SC6 AdHoc","JTC1",
-                                            "802.802 EC  5G SC", "802 EC  5G SC", "EC  5G SC", "802 EC 5G Standing Committee", "802 EC 5G  Standing Committee"]
+                                   "imat": ["JTC1 -- ISO/IEC/JTC1/SC6 AdHoc", "JTC1" ]
                                    }
+
+        # List of specific meetings and a list of specific groups to include that match that meeting
+        # format:  dictionary entry for calendar and imat,  each is a dictionary of breakout names,  each such dictionary
+        # entry is a list of groups to match.
+        self.matchBreakoutAndGroup = {
+                                            'calendar': {
+                                                         # "Newcomer's session":["802"]
+                                                         },
+                                            'imat': {}
+                                        
+                                        }
         
         # List of breakouts not to post in either calendar or IMAT
         # Those on the calendar list are not posted on either the calendar or IMAT
@@ -151,7 +159,8 @@ class Settings(object):
         'Joint Meeting TGaq': 'TGaq/ARC',
         'JOE': 'AANI SC',
         'AANI': 'AANI SC',
-        'TG WUR': 'WUR SG'
+        'TG WUR': 'WUR SG',
+        'PDED -Pre-amble Detection, Energy Detection AdHoc': 'PDED Ad-hoc'
         }
         
         
