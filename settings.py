@@ -55,11 +55,12 @@ class Settings(object):
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        #self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
+        self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
+
         
         # The full path name to the schedule file sent out by F2F.
         #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
-        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2016-11\IEEE802-1116_SCHEDULE_V1.0_ECDraft.xlsx'
+        #self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2016-11\IEEE802-1116_SCHEDULE_V1.0_ECDraft.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -77,8 +78,8 @@ class Settings(object):
       
         
         #self.proxyIP = "127.0.0.1"
-        #self.proxyIP = 'proxy-ir.intel.com'
-        #self.proxyPort = 911
+        self.proxyIP = 'proxy-ir.intel.com'
+        self.proxyPort = 911
       
         
         # Filtering tables ====================================================================
