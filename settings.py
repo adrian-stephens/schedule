@@ -22,7 +22,7 @@ class Settings(object):
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
-        #self.imatUser = "adrian.p.stephens@ieee.org"                            # IMAT user id to log in and access updateImat data
+        self.imatUser = "adrian.p.stephens@ieee.org"                            # IMAT user id to log in and access updateImat data
         
         # Note, the imat user password is stored in a keyring under service='imat' and self.imatUser
         # e.g.
@@ -78,8 +78,8 @@ class Settings(object):
       
         
         #self.proxyIP = "127.0.0.1"
-        self.proxyIP = 'proxy-ir.intel.com'
-        self.proxyPort = 911
+        #self.proxyIP = 'proxy-ir.intel.com'
+        #self.proxyPort = 911
       
         
         # Filtering tables ====================================================================
