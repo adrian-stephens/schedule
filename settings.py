@@ -30,8 +30,9 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        #self.calendarID = "802_11_calendar@ieee.org"
-        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        self.calendarID = "802_11_calendar@ieee.org"
+        
+        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
         self.update = True
