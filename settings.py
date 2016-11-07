@@ -105,11 +105,13 @@ class Settings(object):
                                                     "EC Opening Session",
                                                     "Privacy open meeting",
                                                     "Social Reception",
+                                                    "802 EC Opening Session", 
+                                                    "802.1 Trk 3: OmniRAN 5G",
                                                     "EC Closing Session", "802 EC Closing Session",
                                                     "Wireless Chairs"
                                                    
                                                 ],
-                                   "imat": ["JTC1 -- ISO/IEC/JTC1/SC6 AdHoc", "JTC1" ]
+                                   "imat": ["JTC1 -- ISO/IEC/JTC1/SC6 AdHoc", "JTC1", "802 JTC1" ]
                                    }
 
         # List of specific meetings and a list of specific groups to include that match that meeting
@@ -357,7 +359,7 @@ class Settings(object):
         """
         import re
         
-        #if re.match(".*5G.*", b):
+        #if re.match(".*JTC1.*", b):
         #    dummy = 1
         
 
