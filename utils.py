@@ -40,12 +40,15 @@ def getWanted(settings,group,shortBreakout):
     return wanted, inIMAT
 
 
+from operator import attrgetter
+
 def f2fMergeRooms(events):
     """
     Given a list of Events,  merge rooms for duplicate events
     """
     filteredEvents = []
-    for e in events:
+    sortedEvents = sorted(events, key=attrgetter('summary', 'location'))
+    for e in sortedEvents:
         if e.deleted:
             continue
         
