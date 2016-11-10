@@ -4,7 +4,7 @@
 # Get the events for the date specified in settings into a list
 
 
-from utils import f2fMergeRooms,getWanted
+from utils import f2fMergeRooms,getWanted,sortEvents
 from events import Event
 
 import requests
@@ -105,4 +105,4 @@ def getf2fhttpEvents(settings):
 
     assert (len(f2fEvents) > 0), "f2f page has no events"
 
-    return f2fMergeRooms(f2fEvents)
+    return f2fMergeRooms(sortEvents(f2fEvents))

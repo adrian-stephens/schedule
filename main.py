@@ -26,6 +26,7 @@ import time
 
 from sendEmail import sendEmail
 from getf2fExcel import getf2fExcelEvents
+from utils import sortEvents
 
 settings = settings.Settings()
 
@@ -44,6 +45,8 @@ def processOnce(settings):
         else:
             assert (False),"No source for F2F or Agenda schedule"  
 
+
+        
         # Update IMAT
         if settings.defined('imatUser'):
             info += updateIMAT(settings, events)

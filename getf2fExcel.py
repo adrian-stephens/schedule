@@ -17,7 +17,7 @@ layout = {
 }
 
 import xlrd
-from utils import f2fMergeRooms,getWanted
+from utils import f2fMergeRooms,getWanted,sortEvents
 
 
 def getExcelTime(v,datemode):
@@ -134,5 +134,5 @@ def getf2fExcelEvents(settings):
         entry = Event(settings, startDateTime, endDateTime, shortBreakout, room, inIMAT, group)    
         entries.append(entry)
 
-    return f2fMergeRooms(entries)
+    return f2fMergeRooms(sortEvents(entries))
     

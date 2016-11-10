@@ -42,13 +42,19 @@ def getWanted(settings,group,shortBreakout):
 
 from operator import attrgetter
 
+def sortEvents(events):
+    """
+    Given a list of events,  sort them by date, time, breakout and location
+    """
+    sortedEvents = sorted(events, key=attrgetter('startDateTime','summary', 'location'))
+    return sortedEvents
+
 def f2fMergeRooms(events):
     """
     Given a list of Events,  merge rooms for duplicate events
     """
     filteredEvents = []
-    sortedEvents = sorted(events, key=attrgetter('summary', 'location'))
-    for e in sortedEvents:
+    for e in events:
         if e.deleted:
             continue
         
