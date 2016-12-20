@@ -22,7 +22,7 @@ class Settings(object):
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
-        self.imatUser = "adrian.p.stephens@ieee.org"                            # IMAT user id to log in and access updateImat data
+        #self.imatUser = "adrian.p.stephens@ieee.org"                            # IMAT user id to log in and access updateImat data
         
         # Note, the imat user password is stored in a keyring under service='imat' and self.imatUser
         # e.g.
@@ -30,9 +30,9 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        self.calendarID = "802_11_calendar@ieee.org"
+        #self.calendarID = "802_11_calendar@ieee.org"
         
-        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
         self.update = True
@@ -46,22 +46,22 @@ class Settings(object):
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
-        self.sessionDate = "2016-11-06" # San Antonio
+        self.sessionDate = "2017-01-15" # Atlanta, Buckhead
 
         # The meeting timezone,  represented by an integer being the meeting timing offset from UTC in hours
         # e.g. pacific is -8 in winter and -7 in summer
-        self.timeZoneOffset = -6
+        self.timeZoneOffset = -5
 
         # Agenda source definition ===========================================================
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
+        #self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
 
         
         # The full path name to the schedule file sent out by F2F.
         #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
-        #self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2016-11\IEEE802-1116_SCHEDULE_V1.0_ECDraft.xlsx'
+        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2017-01\IEEE802W-0117_SCHEDULE_V1.0.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
