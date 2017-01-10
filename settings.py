@@ -18,11 +18,11 @@ class Settings(object):
         # Comment out two if unauthenticated smtp server is not available
         self.notifyEmail = "adrian.p.stephens@ieee.org"                         # Email address of person to receive notifications
         #self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
-        #self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
+        self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
-        #self.imatUser = "adrian.p.stephens@ieee.org"                            # IMAT user id to log in and access updateImat data
+        self.imatUser = "adrian.p.stephens@ieee.org"                            # IMAT user id to log in and access updateImat data
         
         # Note, the imat user password is stored in a keyring under service='imat' and self.imatUser
         # e.g.
@@ -30,9 +30,9 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        #self.calendarID = "802_11_calendar@ieee.org"
+        self.calendarID = "802_11_calendar@ieee.org"
         
-        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
         self.update = True
@@ -56,12 +56,12 @@ class Settings(object):
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        #self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
+        self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
 
         
         # The full path name to the schedule file sent out by F2F.
         #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
-        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2017-01\IEEE802W-0117_SCHEDULE_V1.0.xlsx'
+        #self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2017-01\IEEE802W-0117_SCHEDULE_V2.0_EC.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -185,12 +185,12 @@ class Settings(object):
            'AX': 'TGax',
            'AY': 'TGay',
            'AZ': 'TGaz',
+           'BA': 'TGba',
            "Editor's Meeting": 'Editors Meeting',
            "Editors' Meeting": 'Editors Meeting',
            'REG fixed slot': 'REG',
            'Pub': 'PUB',
-           'NGP': 'NGP SG',
-           'LRLP': 'NGP TIG'
+           'LC': 'LC TIG'
         }
            
 
@@ -227,8 +227,11 @@ class Settings(object):
         'tgay': 'TGay',
         'tgaz': 'TGaz',
         'tgmc': 'TGmc',
+        'tgba': 'TGba',
         'tgaq/arc': 'TGaq',
-        'ngmn adhoc': '802.11'
+        'ngmn adhoc': '802.11',
+        'pded ad-hoc': '802.11',
+        'lc tig': '802.11'
         }
         
         # Mapping from projects to the IMAT project descriptors
@@ -241,7 +244,9 @@ class Settings(object):
         'TGaq': "C/LM/WG802.11/802.11aq",
         'TGax': "C/LM/WG802.11/802.11ax",
         'TGay': "C/LM/WG802.11/802.11ay",
-        'TGaz': "C/LM/WG802.11/802.11az"
+        'TGaz': "C/LM/WG802.11/802.11az",
+        'TGba': "C/LM/WG802.11/802.11az"
+        
          }
         
         # These projects are used to collect affiliation if not found in the mapping tables above
