@@ -17,8 +17,8 @@ class Settings(object):
         
         # Comment out two if unauthenticated smtp server is not available
         self.notifyEmail = "adrian.p.stephens@ieee.org"                         # Email address of person to receive notifications
-        #self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
-        self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
+        self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
+        #self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
@@ -79,8 +79,8 @@ class Settings(object):
       
         
         #self.proxyIP = "127.0.0.1"
-        #self.proxyIP = 'proxy-ir.intel.com'
-        #self.proxyPort = 911
+        self.proxyIP = 'proxy-ir.intel.com'
+        self.proxyPort = 911
       
         
         # Filtering tables ====================================================================
