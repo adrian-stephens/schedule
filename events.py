@@ -217,8 +217,8 @@ def compareEventLists(l1,n1,l2,n2,isImat,updatePast):
     for e1 in l1:
         
         # Ignore events that start in the past        
-        if (e1.startDateTimeUTC() <= now) and not updatePast:
-            continue
+#        if (e1.startDateTimeUTC() <= now) and not updatePast:
+#            continue
         
         # Ignore events that end in the past        
         if (e1.endDateTimeUTC() <= now)  and not updatePast:
@@ -246,8 +246,8 @@ def compareEventLists(l1,n1,l2,n2,isImat,updatePast):
     for e2 in l2:
         
         # Ignore events that start in the past        
-        if (e2.startDateTimeUTC() <= now)  and not updatePast:
-            continue
+#        if (e2.startDateTimeUTC() <= now)  and not updatePast:
+#            continue
         
         # Ignore events that end in the past        
         if (e2.endDateTimeUTC() <= now)  and not updatePast:
