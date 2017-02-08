@@ -46,22 +46,22 @@ class Settings(object):
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
-        self.sessionDate = "2017-01-15" # Atlanta, Buckhead
+        self.sessionDate = "2017-03-12" # Vancouver
 
         # The meeting timezone,  represented by an integer being the meeting timing offset from UTC in hours
         # e.g. pacific is -8 in winter and -7 in summer
-        self.timeZoneOffset = -5
+        self.timeZoneOffset = -7
 
         # Agenda source definition ===========================================================
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
+        #self.f2fScheduleURL = "http://802world.org/apps/session/98/attendee/schedule" # Update the session number from F2F numbering
 
         
         # The full path name to the schedule file sent out by F2F.
         #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
-        #self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2017-01\IEEE802W-0117_SCHEDULE_V2.0_EC.xlsx'
+        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2017-03\IEEE802-0317_SCHEDULE_V1.2_Draft_EC.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -111,7 +111,7 @@ class Settings(object):
                                                     "Wireless Chairs"
                                                    
                                                 ],
-                                   "imat": ["JTC1 -- ISO/IEC/JTC1/SC6 AdHoc", "JTC1", "802 JTC1" ]
+                                   "imat": ["JTC1 -- ISO/IEC/JTC1/SC6 AdHoc", "JTC1", "802 JTC1", "Tutorial" ]
                                    }
 
         # List of specific meetings and a list of specific groups to include that match that meeting

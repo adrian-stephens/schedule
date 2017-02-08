@@ -12,7 +12,7 @@ layout = {
     'EndTime': { 'aliases': ['end', 'end time'], 'present': False, 'required': True, 'column': 0},
     'Group': { 'aliases': ['group', 'grp'], 'present': False, 'required': True, 'column': 0},
     'Meeting': { 'aliases': ['meeting', 'breakout'], 'present': False, 'required': True, 'column': 0},
-    'Room': { 'aliases': ['room'], 'present': False, 'required': True, 'column': 0},
+    'Room': { 'aliases': ['room', 'room/level'], 'present': False, 'required': True, 'column': 0},
     'Location': { 'aliases': ['location'], 'present': False, 'required': False, 'column': 0}
 }
 

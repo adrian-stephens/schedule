@@ -127,7 +127,7 @@ def getAgendaEvents(settings):
                     summary = getMeetingSummary(settings, itemValue)
 
                     if summary not in settings.doNotPost:
-                        newEvent = Event(settings,startDateTime, endDateTime, summary, '')
+                        newEvent = Event(settings,startDateTime, endDateTime, summary, '', False, '')
                         events.append(newEvent)              
         
         # Process next day
@@ -138,18 +138,4 @@ def getAgendaEvents(settings):
     
     return events
 
-def main():
-    agendaEvents = getAgendaEvents()
-    if 'scheduleURL' in globals():
-        f2fEvents = getf2fhttpEvents()
-    elif 'excelFile' in globals():
-        f2fEvents = getf2fExcelEvents() 
-    else:
-        assert (False),"No source for F2F schedule" 
-    
-    print compareEventLists(agendaEvents, "Agenda", f2fEvents, "F2F")
-
-
-if __name__ == '__main__':
-    main()
     

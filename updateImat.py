@@ -487,7 +487,7 @@ def addIMATEvent(settings, s, addMeetingURL, startSlots, endSlots, projectIDs, f
     if r.status_code != 302:
         httpFile=open('temp.html','w')
         httpFile.write(r.text)
-        httpFile.close
+        httpFile.close()
     
     assert (r.status_code==302), "Cannot create entry"
 
