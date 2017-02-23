@@ -119,7 +119,7 @@ def getf2fExcelEvents(settings):
             shortBreakout = settings.f2fToBreakout[shortBreakout]
         
         
-        wanted, inIMAT = getWanted(settings,group,shortBreakout)
+        wanted, inIMAT = getWanted(settings,group,shortBreakout,breakout)
         
         if not wanted:
             continue

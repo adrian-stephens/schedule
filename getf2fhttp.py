@@ -69,7 +69,7 @@ def parseHTTP(settings, http):
                     shortBreakout = settings.f2fToBreakout[shortBreakout]
                 
     
-                wanted, inIMAT = getWanted(settings,track,shortBreakout)
+                wanted, inIMAT = getWanted(settings,track,shortBreakout,breakout)
                 
                 if not wanted:
                     continue

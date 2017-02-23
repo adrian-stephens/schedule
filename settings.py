@@ -56,12 +56,12 @@ class Settings(object):
         # Define just one of the following variables: f2fScheduleURL, f2fExcelFile, agendaExcelFile
 
         # Session 91 is May 2015, Vancouver BC
-        #self.f2fScheduleURL = "http://802world.org/apps/session/98/attendee/schedule" # Update the session number from F2F numbering
+        self.f2fScheduleURL = "http://802world.org/apps/session/97/attendee/schedule" # Update the session number from F2F numbering
 
         
         # The full path name to the schedule file sent out by F2F.
         #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
-        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2017-03\IEEE802-0317_SCHEDULE_V1.2_Draft_EC.xlsx'
+        #self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2017-03\IEEE802-0317_SCHEDULE_V1.2_Draft_EC.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -104,11 +104,11 @@ class Settings(object):
                                                     "LMSC Rules Review",
                                                     "EC Opening Session",
                                                     "Privacy open meeting",
-                                                    "Social Reception",
+                                                    "Social Reception", "802 Social Reception",
                                                     "802 EC Opening Session", 
                                                     "802.1 Trk 3: OmniRAN 5G",
                                                     "EC Closing Session", "802 EC Closing Session",
-                                                    "Wireless Chairs"
+                                                    "Wireless Chairs", "802.11/15/18/19/21/22/24 Wireless Chairs"
                                                    
                                                 ],
                                    "imat": ["JTC1 -- ISO/IEC/JTC1/SC6 AdHoc", "JTC1", "802 JTC1", "Tutorial" ]
@@ -153,17 +153,11 @@ class Settings(object):
         self.f2fToBreakout = {
         '802.11 Opening Plenary': 'Opening Plenary',
         "Newcomer Training": "New Members",
-        "5G SC": "5G EC SC",
         'NM': 'New Members',
-        'REVmc': 'TGmc',
-        'Revmc': 'TGmc',
         'WNG SC': 'WNG',
         'Wireless NM': "New Members",
         'Wireless Social Reception': "Social Reception",
-        'Joint Meeting TGaq': 'TGaq/ARC',
-        'JOE': 'AANI SC',
         'AANI': 'AANI SC',
-        'TG WUR': 'WUR SG',
         'PDED -Pre-amble Detection, Energy Detection AdHoc': 'PDED Ad-hoc'
         }
         
@@ -188,8 +182,6 @@ class Settings(object):
            'BA': 'TGba',
            "Editor's Meeting": 'Editors Meeting',
            "Editors' Meeting": 'Editors Meeting',
-           'REG fixed slot': 'REG',
-           'Pub': 'PUB',
            'LC': 'LC TIG'
         }
            

@@ -3,7 +3,7 @@
 # 2015-03-31 Adrian Stephens
 from __builtin__ import True
 
-def getWanted(settings,group,shortBreakout):
+def getWanted(settings,group,shortBreakout,breakout=''):
     wanted = False
     inIMAT = False
     
@@ -18,23 +18,31 @@ def getWanted(settings,group,shortBreakout):
         inIMAT = True
     elif shortBreakout in settings.matchBreakouts['calendar']:
         wanted = True
-        
+
+    if breakout in settings.matchBreakouts['imat']:
+        wanted = True
+        inIMAT = True
+    elif breakout in settings.matchBreakouts['calendar']:
+        wanted = True
+            
     # now look for breakouts with specific groups
     if shortBreakout in settings.matchBreakoutAndGroup['imat']:
         if group in settings.matchBreakoutAndGroup['imat'][shortBreakout]:
             wanted = True
             inIMAT = True
-        else:
-            dummy = 0        
+      
     elif shortBreakout in settings.matchBreakoutAndGroup['calendar']:
         if group in settings.matchBreakoutAndGroup['calendar'][shortBreakout]:
             wanted = True
-        else:
-            dummy = 0        
                 
     if shortBreakout in settings.doNotPost['calendar']:
         wanted = False
     elif shortBreakout in settings.doNotPost['imat']:
+        inIMAT = False
+
+    if breakout in settings.doNotPost['calendar']:
+        wanted = False
+    elif breakout in settings.doNotPost['imat']:
         inIMAT = False
 
     return wanted, inIMAT
