@@ -111,7 +111,7 @@ class Settings(object):
                                                     "Wireless Chairs", "802.11/15/18/19/21/22/24 Wireless Chairs"
                                                    
                                                 ],
-                                   "imat": ["JTC1 -- ISO/IEC/JTC1/SC6 AdHoc", "JTC1", "802 JTC1", "Tutorial" ]
+                                   "imat": ["JTC1 -- ISO/IEC/JTC1/SC6 AdHoc", "JTC1", "802 JTC1", "Tutorial", 'Joint 802.1/802.15 Layer-2 Topics' ]
                                    }
 
         # List of specific meetings and a list of specific groups to include that match that meeting
