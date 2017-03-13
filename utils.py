@@ -7,6 +7,12 @@ def getWanted(settings,group,shortBreakout,breakout=''):
     wanted = False
     inIMAT = False
     
+    if 'caucus' in shortBreakout.lower():
+        return False, False
+
+    if 'DNP' in shortBreakout:
+        return False, False
+    
     if group in settings.matchGroups['imat']:
         wanted = True
         inIMAT = True
