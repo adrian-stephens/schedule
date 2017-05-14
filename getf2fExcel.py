@@ -125,17 +125,14 @@ def getf2fExcelEvents(settings):
             continue
         
         room = s.cell(rowIndex, layout['Room']['column']).value
-        if isinstance(room,float):
+        if isinstance(room, float):
             room=int(room)
-    
+        
         room = str(room)
     
         if layout['Location']['present']:
-            v = s.cell(rowIndex, layout['Location']['column']).value
-            try:
-                room += " (%s)" % (str(v),)
-            except:
-                pass
+            v = str(s.cell(rowIndex, layout['Location']['column']).value)
+            room += " (%s)" % (str(v),)
         
         entry = Event(settings, startDateTime, endDateTime, shortBreakout, room, inIMAT, group)    
         entries.append(entry)
