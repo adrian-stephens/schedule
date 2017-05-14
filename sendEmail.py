@@ -16,13 +16,16 @@ def sendEmail (settings,text):
         return
 
     # Construct email
-    msg = MIMEText(text)
-    msg['To'] = settings.notifyEmail
-   
-    msg['From'] = settings.imatUser
-    msg['Subject'] = "Automated IMAT main, sent at " + datetime.now().strftime("%Y-%m-%d %H:%M")
-    
-    mySmtp= smtplib.SMTP(settings.smtpHost)
-    mySmtp.sendmail(settings.imatUser,settings.notifyEmail,msg.as_string())
-    mySmtp.quit()
+    try:
+        msg = MIMEText(text)
+        msg['To'] = settings.notifyEmail
+       
+        msg['From'] = settings.imatUser
+        msg['Subject'] = "Automated IMAT main, sent at " + datetime.now().strftime("%Y-%m-%d %H:%M")
+        
+        mySmtp= smtplib.SMTP(settings.smtpHost)
+        mySmtp.sendmail(settings.imatUser,settings.notifyEmail,msg.as_string())
+        mySmtp.quit()
+    except:
+        print "Cannot send email"
     

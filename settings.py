@@ -17,7 +17,7 @@ class Settings(object):
         
         # Comment out two if unauthenticated smtp server is not available
         self.notifyEmail = "adrian.p.stephens@ieee.org"                         # Email address of person to receive notifications
-        #self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
+        self.smtpHost = "127.0.0.1"                                           # IP address of smtp server (no logon required)
         #self.smtpHost = "192.168.0.18"                                           # IP address of smtp server (no logon required)
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
@@ -38,7 +38,7 @@ class Settings(object):
         self.update = True
 
         # If true, loop until ^c,  if false,  run in single shot mode
-        self.loop = False
+        self.loop = True
 
         # If true, continue to update events in the past.  If false,  ignore changes to past events.
         # Normally set to False
