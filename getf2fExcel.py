@@ -125,7 +125,10 @@ def getf2fExcelEvents(settings):
             continue
         
         room = s.cell(rowIndex, layout['Room']['column']).value
+        if isinstance(room,float):
+            room=int(room)
     
+        room = str(room)
     
         if layout['Location']['present']:
             v = s.cell(rowIndex, layout['Location']['column']).value

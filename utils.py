@@ -80,7 +80,10 @@ def f2fMergeRooms(events):
                 continue
             
             if  e == t:
-                e.location += ", %s" % (t.location,)
+                try:
+                    e.location += ", %s" % (t.location,)
+                except:
+                    pass
                 t.deleted = True
 
         filteredEvents.append(e)

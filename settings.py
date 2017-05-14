@@ -22,7 +22,7 @@ class Settings(object):
         
         # Imat user to log in.  Needs to be an administrator of the group's IMAT.
         # Comment out to not update IMAT
-        #self.imatUser = "adrian.p.stephens@ieee.org"                            # IMAT user id to log in and access updateImat data
+        self.imatUser = "adrian.p.stephens@ieee.org"                            # IMAT user id to log in and access updateImat data
         
         # Note, the imat user password is stored in a keyring under service='imat' and self.imatUser
         # e.g.
@@ -30,9 +30,9 @@ class Settings(object):
         # >>> keyring.set_password("imat", settings.imatUser, '<password>')
 
         # Google Calendar ID for calendar to update.   Comment out if no calendar is to be updated.
-        #self.calendarID = "802_11_calendar@ieee.org"
+        self.calendarID = "802_11_calendar@ieee.org"
      
-        self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
+        #self.calendarID = "280qc2oit9csf7vgve0o8u9r9k@group.calendar.google.com" # test calendar
 
         # If true, perform update.  If false,  just report differences,  but make no changes.
         self.update = True
@@ -46,7 +46,7 @@ class Settings(object):
 
         # Session date and timezone =========================================================
         # yyyy-mm-dd Start date of the session (corresponds to Sunday, usually)
-        self.sessionDate = "2017-03-12" # Vancouver
+        self.sessionDate = "2017-05-07" # Vancouver
 
         # The meeting timezone,  represented by an integer being the meeting timing offset from UTC in hours
         # e.g. pacific is -8 in winter and -7 in summer
@@ -61,7 +61,7 @@ class Settings(object):
         
         # The full path name to the schedule file sent out by F2F.
         #self.f2fExcelFile = r'C:\Users\apstephe\Desktop\Work\2016-07\IEEEJUL2016_SCHEDULE_V3.0_Draft_ED.xlsx'
-        self.f2fExcelFile = r'C:\Users\adrians\Google Drive\Work\2017-05\802-0517-ScheduleofEvents v1.xlsx'
+        self.f2fExcelFile = r'C:\Users\apstephe\Google Drive\Work\2017-05\802-0517-ScheduleofEvents v5.2.xlsx'
         
         # The full path name of the posted agenda file,  which includes an agenda graphic to be parsed
         #self.agendaExcelFile = r'C:\Users\apstephe\Documents\sandbox\intel\802.11 submissions\WG\may 2015\11-15-0482-d01-0000-may-2015-wg-agenda.xlsx'
@@ -170,7 +170,7 @@ class Settings(object):
         # if the getAgendaEvents module is not used, this can be commented out
         self.mapAgendaToSummary = {
            'NM': 'New Members',
-           'MC': 'TGmc',
+           'MD': 'TGmd',
            'AH': 'TGah',
            'AI': 'TGai',
            'AJ': 'TGaj',
@@ -218,7 +218,7 @@ class Settings(object):
         'tgax': 'TGax',
         'tgay': 'TGay',
         'tgaz': 'TGaz',
-        'tgmc': 'TGmc',
+        'tgmd': 'TGmd',
         'tgba': 'TGba',
         'tgaq/arc': 'TGaq',
         'ngmn adhoc': '802.11',
@@ -228,7 +228,7 @@ class Settings(object):
         
         # Mapping from projects to the IMAT project descriptors
         self.projectToDescriptor = { '802.11': "C/LM/WG802.11",
-        'TGmc': "C/LM/WG802.11/802.11",
+        'TGmd': "C/LM/WG802.11/802.11",
         'TGah': "C/LM/WG802.11/802.11ah",
         'TGai': "C/LM/WG802.11/802.11ai",
         'TGaj': "C/LM/WG802.11/802.11aj",
@@ -237,7 +237,7 @@ class Settings(object):
         'TGax': "C/LM/WG802.11/802.11ax",
         'TGay': "C/LM/WG802.11/802.11ay",
         'TGaz': "C/LM/WG802.11/802.11az",
-        'TGba': "C/LM/WG802.11/802.11az"
+        'TGba': "C/LM/WG802.11/802.11ba"
         
          }
         
